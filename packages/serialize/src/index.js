@@ -324,7 +324,7 @@ export const serializeStyles = function(
   }
   let sourceMap
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     styles = styles.replace(sourceMapPattern, match => {
       sourceMap = match
       return ''
@@ -346,7 +346,7 @@ export const serializeStyles = function(
 
   let name = hashString(styles) + identifierName
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     return {
       name,
       styles,
